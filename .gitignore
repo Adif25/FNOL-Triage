@@ -1,6 +1,9 @@
 .cache/
-out/
+out/*
+!out/run_log.jsonl
+!out/metrics.json
 data/*.jsonl
+!data/sample.jsonl
 __pycache__/
 .env
 .DS_Store
