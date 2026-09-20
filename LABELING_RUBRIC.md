@@ -90,7 +90,7 @@ and fix the severity rather than the routing.
 
 Write them here as you go. Date each one.
 
-- (example) 2026-09-21 — narratives describing a recall notice with no
+- EXAMPLE ONLY, not a real rule — 2026-09-20 — narratives describing a recall notice with no
   incident are `other` / `low`, not `mechanical`, since no loss occurred.
 -
 -

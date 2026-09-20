@@ -33,4 +33,10 @@ Format: `[date] | what happened | what we decided | why`
   macro-F1 by hand instead | ~40 lines, no dependency, and I can explain
   exactly what it computes when asked.
 
+- `2026-09-20` | Assumed `random.seed` made the data pull reproducible |
+  Committed `data/sample.jsonl` to the repo instead | The seed fixes the
+  shuffle, not the source -- NHTSA is live, so a re-pull draws from a
+  different population. The gold labels reference ids in this exact file,
+  so the file is the artifact, not the script.
+
 -

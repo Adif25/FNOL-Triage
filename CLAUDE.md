@@ -70,7 +70,7 @@ itself evidence of how I work.
   so plainly. A real 0.71 is worth more to me than an engineered 0.94.
 
 ## STACK
-Python 3.11, pydantic v2, anthropic, pandas, streamlit.
+Python 3.13, pydantic v2, anthropic, pandas, streamlit.
 No other dependencies without asking.
 
 ## LAYOUT
