@@ -3,3 +3,5 @@ out/
 data/*.jsonl
 __pycache__/
 .env
+.DS_Store
+.venv/
