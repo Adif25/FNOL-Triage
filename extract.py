@@ -9,9 +9,11 @@ Design notes (these are the parts worth being able to explain):
                you change schema.py or prompt.py, or you will be evaluating
                stale outputs.
 
-  Retry     -- one retry, and the validation error is fed back into the
-               prompt. Most enum violations fix themselves this way. If a
-               value fails twice, that's a signal your enum naming is
+  Retry     -- one retry. A validation error is fed back into the prompt;
+               most enum violations fix themselves this way. A transport
+               error (rate limit, network) retries the original prompt
+               unchanged -- the model never saw it. If a value fails
+               validation twice, that's a signal your enum naming is
                ambiguous, not that you need more retries.
 
   Truncation-- recorded explicitly per record. Silent truncation corrupts
@@ -120,8 +122,8 @@ def extract_one(record_id: str, narrative: str) -> dict:
             err = str(e)
             row["last_error"] = err[:500]
         except Exception as e:                     # transport, rate limit, etc.
-            err = f"{type(e).__name__}: {e}"
-            row["last_error"] = err[:500]
+            # Not the model's fault: log it, but retry the original prompt.
+            row["last_error"] = f"{type(e).__name__}: {e}"[:500]
             time.sleep(2 * attempt)                # crude backoff
     else:
         row["ok"] = False
